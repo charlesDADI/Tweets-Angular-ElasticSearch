@@ -1,0 +1,31 @@
+.tweet-container{
+	background-color: rgba(0, 0, 0, 0.1);
+	background: rgba(0, 0, 0, 0.1);
+	color: rgba(0, 0, 0, 0.1);	
+	margin-top:10px;
+	border:solid 4px rgba(0, 0, 255, 0.2);
+	-webkit-border-radius: 50px;
+	-moz-border-radius: 50px;
+	border-radius: 50px;
+	font-size : 24px;
+}
+
+#followers_count{
+	color :#000000;
+	font-size : 20px;
+}
+
+#friends_count{
+	font-size : 20px;
+	color :#000000;
+}
+
+#fullname{
+	font-size : 40px;
+	color :rgba(0, 0, 255, 1);;
+}
+
+#tweet-text{
+	font-size : 20px;
+	font-family:arial;
+}

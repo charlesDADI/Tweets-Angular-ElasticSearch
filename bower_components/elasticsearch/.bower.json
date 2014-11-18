@@ -1,0 +1,24 @@
+{
+  "name": "elasticsearch",
+  "version": "2.1.6",
+  "authors": [
+    "Spencer Alger <spencer@spenceralger.com>"
+  ],
+  "description": "The official low-level Elasticsearch client, for use in the browser.",
+  "main": "elasticsearch.js",
+  "keywords": [
+    "elasticsearch",
+    "client"
+  ],
+  "license": "Apache 2.0",
+  "homepage": "https://github.com/elasticsearch/bower-elasticsearch-js",
+  "_release": "2.1.6",
+  "_resolution": {
+    "type": "version",
+    "tag": "v2.1.6",
+    "commit": "a4a80929923caf7b83ef7c9e6e97bfe0221e1f72"
+  },
+  "_source": "git://github.com/elasticsearch/bower-elasticsearch-js.git",
+  "_target": "~2.1.0",
+  "_originalSource": "elasticsearch"
+}
