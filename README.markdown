@@ -13,7 +13,8 @@ To launch this app
 
 2. Install ElasticSearch:
 	- an easy way: 
-
+		`cd ~`
+		`sudo apt-get update`
 		`wget https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.1.1.deb`
 
 	- then,  
