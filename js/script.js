@@ -32,7 +32,7 @@ myTweetSearchEngine.factory('tweetsService',
 
             // client.search({
             //     "index": 'tweets',
-            //     "type": 'recipe',
+            //     "type": 'tweet',
             //     "body": {
             //         "size": 10,
             //         "from": (offset || 0) * 10,
