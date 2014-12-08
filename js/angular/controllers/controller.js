@@ -3,7 +3,7 @@
 /**
  * Create a controller to interact with the UI.
  */
-MyOpenRecipes.controller('recipeCtrl',
+myTweetSearchEngine.controller('recipeCtrl',
     ['recipeService', '$scope', '$location', function(recipes, $scope, $location){
         // Provide some nice initial choices
         var initChoices = [

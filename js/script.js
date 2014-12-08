@@ -1,7 +1,7 @@
 /**
  * Create the module. Set it up to use html5 mode.
  */
-window.MyOpenRecipes = angular.module('myOpenRecipes', ['elasticsearch'],
+window.myTweetSearchEngine = angular.module('myTweetSearchEngine', ['elasticsearch'],
     ['$locationProvider', function($locationProvider){
         $locationProvider.html5Mode(true);
     }]
@@ -11,7 +11,7 @@ window.MyOpenRecipes = angular.module('myOpenRecipes', ['elasticsearch'],
  * Create a service to power calls to Elasticsearch. We only need to
  * use the _search endpoint.
  */
-MyOpenRecipes.factory('recipeService',
+myTweetSearchEngine.factory('recipeService',
     ['$q', 'esFactory', '$location', function($q, elasticsearch, $location){
         var client = elasticsearch({
             host: $location.host() + ":9200"
@@ -69,7 +69,7 @@ MyOpenRecipes.factory('recipeService',
 /**
  * Create a controller to interact with the UI.
  */
-MyOpenRecipes.controller('recipeCtrl',
+myTweetSearchEngine.controller('recipeCtrl',
     ['recipeService', '$scope', '$location', function(tweets, $scope, $location){
         // Provide some nice initial choices
         var initChoices = [

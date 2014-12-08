@@ -3,7 +3,7 @@
  * Create a service to power calls to Elasticsearch. We only need to
  * use the _search endpoint.
  */
-MyOpenRecipes.factory('recipeService',
+myTweetSearchEngine.factory('recipeService',
     ['$q', 'esFactory', '$location', function($q, elasticsearch, $location){
         var client = elasticsearch({
             host: $location.host() + ":9200"
