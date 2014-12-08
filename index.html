@@ -9,7 +9,6 @@
     <link href="css/screen.css" media="screen" rel="stylesheet" type="text/css" />
       <link href="css/bootstrap.min.css" media="screen" rel="stylesheet" type="text/css" />
       <link href="css/style.css" media="screen" rel="stylesheet" type="text/css" />
-
       <script src="bower_components/angular/angular.js" type="text/javascript"></script>
       <script src="js/angular/angular-bootstrap-select.js" type="text/javascript"></script>
 
@@ -28,20 +27,24 @@
           <hr>
         </header>
         <section class='searchField'>
+          <form name="myForm">
+            <h3><input type="radio" ng-model="type" value="location">  user location 
+           <input type="radio" ng-model="type" ng-value="keyword"> keyword</h3>
+         </form>
           <form ng-submit='search()'>
             
-              <input ng-style="{ 'width' : '50%'}" class="form-control" ng-init='ekimetrics' ng-model='searchTerm' type='text'><input class="btn btn-primary" type='submit' value='Search tweets'>
+              <input ng-style="{ 'width' : '50%'}" class="form-control" ng-init='photography' ng-model='searchTerm' type='text'><input class="btn btn-primary" type='submit' value='Search tweets'>
            
           </form>
 
             <hr>
             <div class="col-lg-12">
               <div class="col-lg-6">
-                <i class="glyphicon glyphicon-filter"></i> Filter:
-                <select class="selectpicker"  align="center" ng-model="sortChoice" ng-options="option.key as option.label for option in sortoptions" ></select>    
+                <h3><i class="glyphicon glyphicon-filter"></i> Filter:
+                <select class="selectpicker"  align="center" ng-model="sortChoice" ng-options="option.key as option.label for option in sortoptions" ></select> </h3>   
               </div>        
             <div class="col-lg-6">
-              <i class="glyphicon glyphicon-filter"></i>Limit: <input type="number" ng-model="LimitFaved" max="100"  min="0" >  
+              <h3><i class="glyphicon glyphicon-filter"></i>Limit: <input type="number" ng-model="LimitFaved" max="100"  min="0" >  </h3>
             </div> 
             </div>
         </section>

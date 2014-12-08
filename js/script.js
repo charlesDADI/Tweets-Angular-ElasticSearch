@@ -17,36 +17,44 @@ myTweetSearchEngine.factory('tweetsService',
             host: $location.host() + ":9200"
         });
 
+
+
+
         /**
          * Given a term and an offset, load another round of 10 tweets.
          *
          * Returns a promise.
          */
-        var search = function(term, offset){
-            var deferred = $q.defer();
-            var query = {
-                "match": {
-                    "_all": term
-                }
-            };
+        var search = function(term, offset,type){
+          var deferred = $q.defer();
+          var query_loc ={"match":{"tweet.user.location":"paris"}}
+            console.log(type)
+            // var query = {"match": {"_all": term}};
+            var type='text';
 
-            // client.search({
-            //     "index": 'tweets',
-            //     "type": 'tweet',
-            //     "body": {
-            //         "size": 10,
-            //         "from": (offset || 0) * 10,
-            //         "query": query
-            //     }
-            client.search({
+             var query ={
                 "index": 'my-tweets',
                 "type": 'tweet',
                 "body": {
                     "size": 1000,
                     "from": (offset || 0) * 1000,
-                    "query": query
+                    "query": {"match": {"_all": term}}
                 }
-            }).then(function(result) {
+            }
+
+             var query_loc ={
+                "index": 'my-tweets',
+                "type": 'tweet',
+                "body": {
+                    "size": 1000,
+                    "from": (offset || 0) * 1000,
+                    "query": {"match":{"tweet.user.location":term}}
+                }
+            }
+
+            if (type=='location') {var query = query_loc} else{var query = query};
+
+            client.search(query).then(function(result) {
                 var ii = 0, hits_in, hits_out = [];
                 hits_in = (result.hits || {}).hits || [];
                 console.log(hits_in)
@@ -106,14 +114,14 @@ myTweetSearchEngine.controller('tweetsCtrl',
         };
 
 
-
+        $scope.type = 'keyword'
         /**
          * Load the next page of results, incrementing the page counter.
          * When query is finished, push results onto $scope.tweets and decide
          * whether all results have been returned (i.e. were 10 results returned?)
          */
         $scope.loadMore = function(){
-            tweets.search($scope.searchTerm, $scope.page++).then(function(results){
+            tweets.search($scope.searchTerm, $scope.page++, $scope.type ).then(function(results){
                 if(results.length !== 10){
                     $scope.allResults = true;
                 }
