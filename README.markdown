@@ -27,3 +27,10 @@ To launch this app
 
 
 3. Let's download some tweets on the target system
+
+4. `bower install`
+
+5. Start a local server 
+	`python -m SimpleHTTPServer`
+	
+6. Visit 'localhost:8000/'
