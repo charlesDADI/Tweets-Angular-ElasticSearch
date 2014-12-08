@@ -40,7 +40,7 @@ MyOpenRecipes.factory('recipeService',
             //     }
             client.search({
                 "index": 'my-tweets',
-                "type": 'test-type',
+                "type": 'tweet',
                 "body": {
                     "size": 1000,
                     "from": (offset || 0) * 1000,

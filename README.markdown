@@ -16,7 +16,7 @@ To launch this app
 		`cd ~`
 		`sudo apt-get update`
 		`sudo apt-get install openjdk-7-jre-headless -y`
-		`wget https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.1.1.deb`
+		`wget httsudops://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.1.1.deb`
 		`sudo dpkg -i elasticsearch-1.1.1.deb`
 		`sudo service elasticsearch start`
 
@@ -26,7 +26,9 @@ To launch this app
 	- `http://localhost:9200/_plugin/head/`
 
 
-3. Let's download some tweets on the target system
+3. Let's insert some tweets to your ES cluster
+	'cd /data'
+	'python getTweet.py' (Be sure ES is running!)
 
 4. `bower install`
 
