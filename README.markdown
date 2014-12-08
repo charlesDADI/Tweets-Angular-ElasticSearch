@@ -15,9 +15,15 @@ To launch this app
 	- an easy way: 
 		`cd ~`
 		`sudo apt-get update`
+		`sudo apt-get install openjdk-7-jre-headless -y`
 		`wget https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.1.1.deb`
-
-	- then,  
 		`sudo dpkg -i elasticsearch-1.1.1.deb`
-	- start elasticSearch : `sudo service elasticsearch start`
+		`sudo service elasticsearch start`
 
+	- install head (user friendly interface),  
+		`sudo /usr/share/elasticsearch/bin/plugin -install mobz/elasticsearch-head`
+
+	- `http://localhost:9200/_plugin/head/`
+
+
+3. Let's download some tweets on the target system
