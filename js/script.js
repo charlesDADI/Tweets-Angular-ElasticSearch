@@ -89,7 +89,7 @@ myTweetSearchEngine.controller('tweetsCtrl',
         $scope.page = 0;            // A counter to keep track of our current page
         $scope.allResults = false;  // Whether or not all results have been found.
 
-        $scope.LimitFaved = 50;
+        $scope.LimitFaved = 5;
         $scope.sortChoice='-user.expert';
         $scope.sortoptions=[
             {label:'Followers count Down',key:'-user.followers_count'},
