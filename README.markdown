@@ -36,3 +36,5 @@ To launch this app
 	`python -m SimpleHTTPServer`
 	
 6. Visit 'localhost:8000/'
+
+7. enjoy and tune your angular route/filter
