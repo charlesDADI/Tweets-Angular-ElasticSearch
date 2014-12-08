@@ -27,8 +27,8 @@ To launch this app
 
 
 3. Let's insert some tweets to your ES cluster
-	'cd /data'
-	'python getTweet.py' (Be sure ES is running!)
+	`cd /data`
+	`python getTweet.py` (Be sure ES is running!)
 
 4. `bower install`
 
