@@ -77,7 +77,7 @@ myTweetSearchEngine.controller('tweetsCtrl',
         var idx = Math.floor(Math.random() * initChoices.length);
 
         // Initialize the scope defaults.
-        $scope.tweets = [];        // An array of recipe results to display
+        $scope.tweets = [];        // An array of tweets results to display
         $scope.page = 0;            // A counter to keep track of our current page
         $scope.allResults = false;  // Whether or not all results have been found.
 
