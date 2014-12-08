@@ -27,6 +27,7 @@ To launch this app
 
 
 3. Let's insert some tweets to your ES cluster
+	'sudo pip install elasticsearch'
 	`cd /data`
 	`python getTweet.py` (Be sure ES is running!)
 
