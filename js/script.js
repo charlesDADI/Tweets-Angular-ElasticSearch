@@ -17,26 +17,23 @@ myTweetSearchEngine.factory('tweetsService',
             host: $location.host() + ":9200"
         });
 
-
-
-
         /**
          * Given a term and an offset, load another round of 10 tweets.
          *
          * Returns a promise.
          */
-        var search = function(term, offset,type){
+        var search = function(term, offset, type){
+            console.log(term);
+            console.log(offset);
+            console.log(type);
           var deferred = $q.defer();
-          var query_loc ={"match":{"tweet.user.location":"paris"}}
-            console.log(type)
-            // var query = {"match": {"_all": term}};
-            var type='text';
 
+          var query_loc ={"match":{"tweet.user.location":"paris"}}
              var query ={
                 "index": 'my-tweets',
                 "type": 'tweet',
                 "body": {
-                    "size": 1000,
+                    "size": 100,
                     "from": (offset || 0) * 1000,
                     "query": {"match": {"_all": term}}
                 }
@@ -46,15 +43,16 @@ myTweetSearchEngine.factory('tweetsService',
                 "index": 'my-tweets',
                 "type": 'tweet',
                 "body": {
-                    "size": 1000,
+                    "size": 100,
                     "from": (offset || 0) * 1000,
                     "query": {"match":{"tweet.user.location":term}}
                 }
             }
 
-            if (type=='location') {var query = query_loc} else{var query = query};
+            if (type=='location') {var query = query_loc} else{var query2 = query};
 
             client.search(query).then(function(result) {
+                console.log(query_loc)
                 var ii = 0, hits_in, hits_out = [];
                 hits_in = (result.hits || {}).hits || [];
                 console.log(hits_in)
@@ -74,21 +72,35 @@ myTweetSearchEngine.factory('tweetsService',
     }]
 );
 
+
+
 /**
  * Create a controller to interact with the UI.
  */
 myTweetSearchEngine.controller('tweetsCtrl',
     ['tweetsService', '$scope', '$location', function(tweets, $scope, $location){
+        
         // Provide some nice initial choices
-        var initChoices =  ['photography','luxury','stats','bigdata','ekimetrics',
-              'sport','fashion','multimedia','machinelearning','math'] ;
+        var initChoices =  [
+                            'photography',
+                            'luxury',
+                            'stats',
+                            'bigdata',
+                            'ekimetrics',
+                            'sport',
+                            'fashion',
+                            'multimedia',
+                            'machinelearning',
+                            'math'
+                            ];
+
         var idx = Math.floor(Math.random() * initChoices.length);
 
         // Initialize the scope defaults.
         $scope.tweets = [];        // An array of tweets results to display
         $scope.page = 0;            // A counter to keep track of our current page
         $scope.allResults = false;  // Whether or not all results have been found.
-
+        $scope.searchTerm = 'Ekimetrics'
         $scope.LimitFaved = 5;
         $scope.sortChoice='-user.expert';
         $scope.sortoptions=[
@@ -98,8 +110,11 @@ myTweetSearchEngine.controller('tweetsCtrl',
             {label:'Screen Name Z-A',key:'-user.screen_name'}
         ];
 
-        // And, a random search term to start if none was present on page load.
-        $scope.searchTerm = $location.search().q || initChoices[idx];
+        $scope.type = 'keyword'
+        $scope.changekwd=function(){
+            $scope.searchTerm = '';
+        }
+
 
         /**
          * A fresh search. Reset the scope variables to their defaults, set
@@ -114,7 +129,6 @@ myTweetSearchEngine.controller('tweetsCtrl',
         };
 
 
-        $scope.type = 'keyword'
         /**
          * Load the next page of results, incrementing the page counter.
          * When query is finished, push results onto $scope.tweets and decide
@@ -125,7 +139,6 @@ myTweetSearchEngine.controller('tweetsCtrl',
                 if(results.length !== 10){
                     $scope.allResults = true;
                 }
-
                 var ii = 0;
                 for(;ii < results.length; ii++){
                     $scope.tweets.push(results[ii]);
